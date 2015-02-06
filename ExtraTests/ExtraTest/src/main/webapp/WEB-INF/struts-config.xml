@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+          "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+
+
+<struts-config>
+    <form-beans>
+        <form-bean name="mapbacked" type="org.sample.struts1.extra.MapBackedForm"/>
+        <form-bean name="mapbacked2" type="org.sample.struts1.extra.MapBackedForm2"/>
+        <form-bean name="mbt" type="org.sample.struts1.extra.MultiBoxTest"/>
+        <form-bean name="HtmlForm" type="org.apache.struts.action.DynaActionForm">
+            <form-property name="stringData" type="java.lang.String"/>
+            <form-property name="userDataList" type="java.util.List"/>
+        </form-bean>
+        <form-bean name="DynaArray" type="org.apache.struts.action.DynaActionForm">
+            <form-property name="idData" type="java.lang.String[]"/>
+            <form-property name="nameData" type="java.lang.String[]"/>
+        </form-bean>
+        <form-bean name="StaticArray" type="org.sample.struts1.extra.StaticActionForm"/>
+        <form-bean name="userData4" type="org.sample.struts1.extra.UserData4"/>
+        <form-bean name="sHtmlForm" type="org.sample.struts1.extra.HtmlForm"/>
+    </form-beans>
+    <global-forwards>
+        <forward name="s1_child" path="/include/s1_child.jsp"/>
+        <forward name="success19" path="/forward/success19_f.jsp"/>
+        <forward name="success" path="/WEB-INF/success.jsp"/>
+    </global-forwards>
+    <action-mappings>
+        <action path="/test1" forward="/WEB-INF/test1.jsp"/>
+        <action path="/download" type="org.sample.struts1.extra.ExtraTest1"/>
+        
+        <action path="/test3" forward="/WEB-INF/test3.jsp"/>
+        <action path="/test3-input" name="mapbacked" type="org.sample.struts1.extra.ExtraTest3">
+            <forward name="success" path="/WEB-INF/test3-result.jsp"/>
+        </action>
+        
+        <action path="/test3_1" forward="/WEB-INF/test3_1.jsp"/>
+        <action path="/test3_1-input" name="mapbacked2" type="org.sample.struts1.extra.ExtraTest3_1">
+            <forward name="success" path="/WEB-INF/test3_1-result.jsp"/>
+        </action>
+        
+        <action path="/test4" forward="/WEB-INF/test4.jsp"/>
+        
+        <action path="/test5" type="org.sample.struts1.extra.ExtraTest5">
+            <forward name="success" path="/WEB-INF/test5.jsp" />
+        </action>
+        
+        <action path="/test6" forward="/WEB-INF/test6.jsp"/>
+        
+        <action path="/test7" forward="/WEB-INF/test7.jsp"/>
+
+        <action path="/test8" forward="/WEB-INF/test8.jsp"/>
+
+        <action path="/test9" forward="/WEB-INF/test9.jsp"/>
+
+        <action path="/test10" type="org.sample.struts1.extra.ExtraTest10">
+            <forward name="success" path="/WEB-INF/test10.jsp" />
+        </action>
+        
+        <action path="/test11" forward="/WEB-INF/test11.jsp"/>
+        
+        <action path="/test12" forward="/WEB-INF/test12.jsp"/>
+        <action path="/test13" forward="/WEB-INF/test13.jsp"/>
+        <action path="/test14" forward="/WEB-INF/test14.jsp"/>
+        <action path="/test14-1" forward="/WEB-INF/test14-1.jsp"/>
+        <action path="/test14-2" forward="/WEB-INF/test14-2.jsp"/>
+        <action path="/test14-3" forward="/WEB-INF/test14-3.jsp"/>
+        <action path="/test14-4" forward="/WEB-INF/test14-4.jsp"/>
+        <action path="/test14-5" forward="/WEB-INF/test14-5.jsp"/>
+        <action path="/test14-6" forward="/WEB-INF/test14-6.jsp"/>
+        <action path="/test14-action" type="org.sample.struts1.extra.ExtraTest14" name="mbt">
+            <forward name="success" path="/WEB-INF/test14-result.jsp"/>
+        </action>
+        <action path="/test15" type="org.sample.struts1.extra.ExtraTest15">
+            <forward name="success" path="/WEB-INF/test15.jsp"/>
+        </action>
+        
+        <action path="/test16" type="org.sample.struts1.extra.ExtraTest16" name="DynaArray">
+            <forward name="success" path="/WEB-INF/test16.jsp"/>
+        </action>
+        <action path="/test16_1" type="org.sample.struts1.extra.ExtraTest16_1" name="StaticArray">
+            <forward name="success" path="/WEB-INF/test16_1.jsp"/>
+        </action>
+        <action path="/test17" type="org.sample.struts1.extra.ExtraTest17" name="HtmlForm">
+            <forward name="success" path="/WEB-INF/test17.jsp"/>
+        </action>
+        <action path="/test17_1" type="org.sample.struts1.extra.ExtraTest17_1" name="userData4">
+            <forward name="success" path="/WEB-INF/test17_1.jsp"/>
+        </action>
+        <action path="/result" forward="/WEB-INF/result.jsp" name="HtmlForm"/>
+        <action path="/test17_2" type="org.sample.struts1.extra.ExtraTest17" name="HtmlForm">
+            <forward name="success" path="/WEB-INF/test17_2.jsp"/>
+        </action>
+        <action path="/result_2" forward="/WEB-INF/result_2.jsp" name="sHtmlForm"/>
+        <action path="/test18" type="org.sample.struts1.extra.ExtraTest18">
+            <forward name="success" path="/WEB-INF/test18.jsp"/>
+        </action>
+        <action path="/test19" type="org.sample.struts1.extra.ExtraTest19" name="HtmlForm">
+            <forward name="success" path="/WEB-INF/test19.jsp"/>
+            <forward name="success19" path="/WEB-INF/success19.jsp"/>
+        </action>
+        <action path="/test19-action" forward="/WEB-INF/test19-action.jsp"/>
+        <action path="/test20" forward="/WEB-INF/test20.jsp"/>
+        <action path="/test20-1" forward="/WEB-INF/test20-1.jsp"/>
+    </action-mappings>
+	
+    <message-resources parameter="global"/>
+</struts-config>

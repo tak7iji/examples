@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.sample.mybatis.TableMapper">
+    <select id="selectTestTables" databaseId="postgresql" parameterType="map" resultType="org.sample.mybatis.TestTable">
+        select * from TestTable
+        <if test="LIMIT_ID =='true'">
+        where id=#{id} and name like '%${name}%'
+        </if>
+    </select>
+    <insert id="insertTestTable">
+        insert into TestTable values(#{id}, #{name}, #{address})
+    </insert>
+
+</mapper>

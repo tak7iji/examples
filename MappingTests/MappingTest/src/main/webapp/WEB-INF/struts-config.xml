@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+          "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+
+
+<struts-config>
+	<form-beans>
+	    <form-bean name="test" type="org.sample.struts1.mapping.TestFormBean"/>
+	</form-beans>
+	
+	<global-exceptions>
+		<exception key="global.exception1" type="java.io.IOException" path="/WEB-INF/error1.jsp"/>
+	</global-exceptions>
+
+	<global-forwards>
+		<forward name="success" path="/WEB-INF/forward.jsp" />
+		<forward name="dispatch1" path="/WEB-INF/dispatch1.jsp" />
+		<forward name="dispatch2" path="/WEB-INF/dispatch2.jsp" />
+	</global-forwards>
+
+	<action-mappings>
+		<action path="/test1" type="org.sample.struts1.mapping.MappingTest1"/>
+		
+		<action path="/test2" forward="/WEB-INF/dispatchaction.jsp"/>
+		<action path="/test2-dispatch" type="org.sample.struts1.mapping.MappingTest2" name="test" parameter="execute"/>
+
+		<action path="/test3" forward="/WEB-INF/mappingdispatchaction.jsp"/>
+		<action path="/test3-dispatch1" type="org.sample.struts1.mapping.MappingTest3" name="test" parameter="dispatch1">
+			<forward name="test3-dispatch2" path="/test3-dispatch2.do"/>
+		</action>
+		<action path="/test3-dispatch2" type="org.sample.struts1.mapping.MappingTest3" name="test" parameter="dispatch2"/>
+
+		<action path="/test4" forward="/WEB-INF/lookupdispatchaction.jsp"/>
+		<action path="/test4-dispatch" type="org.sample.struts1.mapping.MappingTest4" name="test" parameter="execute"/>
+
+		<action path="/test5" forward="/WEB-INF/eventdispatchaction.jsp"/>
+		<action path="/test5-dispatch" type="org.sample.struts1.mapping.MappingTest5" name="test" parameter="dispatch1,dispatch2,default=dispatch1"/>
+
+		<action path="/test6" type="org.apache.struts.actions.ForwardAction" parameter="/WEB-INF/forward.jsp"/>
+		<action path="/test7" type="org.apache.struts.actions.IncludeAction" parameter="/WEB-INF/forward.jsp"/>
+		
+		<action path="/test8" forward="/WEB-INF/mappingdispatchaction8.jsp"/>
+		<action path="/test8-*" type="org.sample.struts1.mapping.MappingTest8" name="test" parameter="{1}"/>
+		
+		<action path="/test10" forward="/WEB-INF/mappingdispatchaction10.jsp"/>
+		<action path="/test10-*" type="org.sample.struts1.mapping.MappingTest10" name="test" parameter="{1}">
+			<forward name="test10redirect" path="/test10redirect.do"/>
+			<forward name="test10forward" path="/test10forward.do"/>
+		</action>
+		<action path="/test10redirect" type="org.sample.struts1.mapping.MappingTest10_Redirect" name="test"/>
+		<action path="/test10forward" type="org.sample.struts1.mapping.MappingTest10_Forward" name="test"/>
+
+        <action path="/test11" include="/WEB-INF/forward.jsp"/>
+        <action path="/test12" forward="/WEB-INF/forward.jsp"/>
+
+	</action-mappings>
+	<controller contentType="text/plain"/>
+	<message-resources parameter="test4"/>
+</struts-config>

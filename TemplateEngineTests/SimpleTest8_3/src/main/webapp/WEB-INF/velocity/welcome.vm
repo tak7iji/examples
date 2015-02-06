@@ -1,0 +1,9 @@
+<html>
+
+<body>
+<h1>SpringMVC localization example(Velocity Version)</h1>
+$mb<br>
+$mb.message<br>
+<a href="#springUrl('/logon')">back to login</a>
+</body>
+</html>

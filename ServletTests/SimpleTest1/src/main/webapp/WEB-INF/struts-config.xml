@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+          "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+
+
+<struts-config>
+    <form-beans>
+        <form-bean name="TestActionForm" type="org.apache.struts.action.DynaActionForm">
+            <form-property name="test" type="java.lang.String"/>
+        </form-bean>
+    </form-beans>
+    <action-mappings>
+        <action path="/test" type="org.sample.struts1.simple.SimpleTest" name="TestActionForm">
+            <forward name="success" path="/WEB-INF/test.jsp"/>
+        </action>
+        <action path="/test2" type="org.sample.struts1.simple.SimpleTest2">
+            <forward name="success" path="/WEB-INF/test2.jsp"/>
+        </action>
+        <action path="/result" forward="/WEB-INF/result.jsp" name="TestActionForm"/>
+    </action-mappings>
+</struts-config>

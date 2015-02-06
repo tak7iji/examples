@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+          "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+
+
+<struts-config>
+    <form-beans>
+        <form-bean name="ui" type="org.sample.struts1.extra.UserInfo"/>
+        <form-bean name="English" type="org.apache.struts.action.DynaActionForm">
+            <form-property name="language" type="java.lang.String" initial="en" />
+            <form-property name="country" type="java.lang.String" initial="" />
+            <form-property name="page" type="java.lang.String" initial="/login.do" />
+        </form-bean>
+		<form-bean name="German" type="org.apache.struts.action.DynaActionForm">
+		    <form-property name="language" type="java.lang.String" initial="de" />
+            <form-property name="country" type="java.lang.String" initial="" />
+            <form-property name="page" type="java.lang.String" initial="/login.do" />
+		</form-bean>
+        <form-bean name="France" type="org.apache.struts.action.DynaActionForm">
+            <form-property name="language" type="java.lang.String" initial="fr" />
+            <form-property name="country" type="java.lang.String" initial="" />
+            <form-property name="page" type="java.lang.String" initial="/login.do" />
+        </form-bean>
+        <form-bean name="Japanese" type="org.apache.struts.action.DynaActionForm">
+            <form-property name="language" type="java.lang.String" initial="ja" />
+            <form-property name="country" type="java.lang.String" initial="" />
+            <form-property name="page" type="java.lang.String" initial="/login.do" />
+        </form-bean>
+    </form-beans>
+
+    <action-mappings>
+        <action path="/validateUser" cancellable="true" name="ui" type="org.sample.struts1.extra.ExtraTest2" input="input">
+            <forward name="input" path="/login.do"/>
+            <forward name="success" module="/" path="/WEB-INF/welcome.jsp"/>
+        </action>
+        <action path="/login" type="org.sample.struts1.extra.Login">
+            <forward name="loginView" module="/" path="/WEB-INF/login.jsp"/>
+        </action>
+        <action path="/English" name="English" type="org.apache.struts.actions.LocaleAction"/>
+        <action path="/German" name="German" type="org.apache.struts.actions.LocaleAction"/>
+        <action path="/France" name="France" type="org.apache.struts.actions.LocaleAction" roles="french"/>
+        <action path="/Japanese" name="Japanese" type="org.apache.struts.actions.LocaleAction"/>
+    </action-mappings>
+
+    <controller inputForward="true" />
+
+    <message-resources parameter="global"/>
+    <message-resources parameter="org/sample/struts1/extra/ExtraTest2" key="validate"/>
+
+    <plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+        <set-property property="pathnames" 
+            value="/org/apache/struts/validator/validator-rules.xml, /WEB-INF/validation.xml"/>
+    </plug-in>
+</struts-config>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+          "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+
+
+<struts-config>
+	<form-beans>
+	    <form-bean name="test" type="org.sample.struts1.exception.TestFormBean"/>
+	</form-beans>
+	
+	<global-exceptions>
+		<exception key="global.exception1" type="org.sample.struts1.exception.TestException" path="/WEB-INF/error1.jsp"/>
+		<exception key="" type="org.apache.struts.util.ModuleException" path="/WEB-INF/error1.jsp"/>
+	</global-exceptions>
+
+	<global-forwards/>
+
+	<action-mappings>
+		<action path="/test1" type="org.sample.struts1.exception.ExceptionTest1">
+			<exception key="global.exception2" type="java.io.IOException" path="/WEB-INF/error2.jsp"/>
+		</action>
+		<action path="/test2" forward="/WEB-INF/error-jsp.jsp">
+			<exception key="global.exception3" type="java.io.IOException" path="/WEB-INF/error1.jsp"/>
+		</action>
+		<action path="/test3" forward="/WEB-INF/mappingdispatchaction3.jsp"/>
+		<action path="/test3-*" type="org.sample.struts1.exception.ExceptionTest3" name="test" parameter="{1}"/>
+		
+		<action path="/test4" type="org.sample.struts1.exception.ExceptionTest4"/>
+		<action path="/test5" forward="/WEB-INF/action.jsp"/>
+		<action path="/test5-dispatch" type="org.sample.struts1.exception.ExceptionTest5" name="test">
+			<exception key="global.exception7" handler="org.sample.struts1.exception.CustomExceptionHandler" type="java.io.IOException" path="/WEB-INF/error2.jsp"/>
+		</action>
+	</action-mappings>
+	<message-resources parameter="messages"/>
+</struts-config>

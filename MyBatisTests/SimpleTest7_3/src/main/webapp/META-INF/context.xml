@@ -1,0 +1,25 @@
+<Context reloadable="false" crossContext="false">
+
+    <!-- DataSourceFactoryの静的初期化子（staticブロック）内でorg.objectweb.jotm.Jotmのインスタンスが作成される。 -->
+    <!-- このとき、TransactionFactory, TransactionSynchronizationRegistryImplをインスタンス化。 -->
+    <Resource name="jdbc/tpcwDS"
+        factory="org.objectweb.jotm.datasource.DataSourceFactory"
+        type="javax.sql.XADataSource"
+        driverClassName="org.postgresql.Driver"
+        url="jdbc:postgresql://127.0.0.1:5432/testdb"
+        username="test" password="test"
+        maxTotal="1" maxIdle="1"/>
+        
+    <Resource name="TransactionSynchronizationRegistry" 
+        auth="Container" 
+        type="javax.transaction.TransactionSynchronizationRegistry" 
+        factory="org.objectweb.jotm.TransactionSynchronizationRegistryFactory"/>
+
+    <Resource
+        name="UserTransaction"
+        auth="Container"
+        type="javax.transaction.UserTransaction" />
+
+    <Transaction factory="org.objectweb.jotm.UserTransactionFactory" jotm.timeout="60" />
+
+</Context>

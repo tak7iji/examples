@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.3.dtd">
+ 
+<struts>
+
+	<constant name="struts.custom.i18n.resources" value="global,org/sample/struts2/extra/ExtraTest2" />
+ 	<constant name="struts.devMode" value="false" />
+	
+    <package name="user" namespace="/user" extends="struts-default">
+        <action name="login">
+            <result>/WEB-INF/login.jsp</result>
+        </action>
+        <action name="locale">
+            <interceptor-ref name="defaultStack"/>
+	        <interceptor-ref name="roles">
+	            <param name="allowedRoles">french</param> 
+	        </interceptor-ref>
+            <result>/WEB-INF/login.jsp</result>
+        </action>
+        
+        <action name="validateUser" class="org.sample.struts2.extra.ExtraTest2">
+            <result name="SUCCESS">/WEB-INF/welcome.jsp</result>
+            <result name="input">/WEB-INF/login.jsp</result>
+        </action>
+    </package>
+           
+    <package name="default" namespace="/" extends="struts-default">
+        <action name="test1">
+            <result name="success">/WEB-INF/test1.jsp</result>
+        </action>
+
+        <action name="download" class="org.sample.struts2.extra.ExtraTest1">
+            <result name="success" type="stream">
+                <param name="contentType">application/octet-stream</param>
+                <param name="inputName">fileInputStream</param>
+                <param name="contentDisposition">attachment;filename="fileABC.txt"</param>
+                <param name="bufferSize">1024</param>
+            </result>
+        </action>
+        <action name="test3">
+            <result>/WEB-INF/test3.jsp</result>
+        </action>
+        
+        <action name="test3-input" class="org.sample.struts2.extra.ExtraTest3">
+            <result name="success">/WEB-INF/test3-result.jsp</result>
+        </action>
+        
+        <action name="test4" class="org.sample.struts2.extra.ExtraTest4">
+                <interceptor-ref name="defaultStack"/>
+                <interceptor-ref name="cookie">
+                    <param name="cookiesName">*</param>
+                    <param name="cookiesValue">*</param>
+                </interceptor-ref>
+            <result name="success">/WEB-INF/test4.jsp</result>
+        </action>
+        
+        <action name="test5" class="org.sample.struts2.extra.ExtraTest5">
+            <result name="success">/WEB-INF/test5.jsp</result>
+        </action>
+        
+        <action name="test6">
+            <result>/WEB-INF/test6.jsp</result>
+        </action>
+
+        <action name="test7">
+            <result>/WEB-INF/test7.jsp</result>
+        </action>
+        
+        <action name="test7_1" class="org.sample.struts2.extra.ExtraTest7_1">
+            <result name="success">/WEB-INF/test7-1.jsp</result>
+        </action>
+
+        <action name="test8">
+            <result>/WEB-INF/test8.jsp</result>
+        </action>
+
+        <action name="test9">
+            <result>/WEB-INF/test9.jsp</result>
+        </action>
+        <action name="test11">
+            <result>/WEB-INF/test11.jsp</result>
+        </action>
+        <action name="test12">
+            <result>/WEB-INF/test12.jsp</result>
+        </action>
+        <action name="test13">
+            <result>/WEB-INF/test13.jsp</result>
+        </action>
+        <action name="test15">
+            <result>/WEB-INF/test15.jsp</result>
+        </action>
+    </package>
+</struts>

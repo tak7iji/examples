@@ -1,0 +1,23 @@
+<html>
+
+<body>
+<h1>SpringMVC localization example(Velocity Version)</h1>
+Date: $date.getDate()<br>
+## may be null
+Browser: $browser<br>
+${mb}<p>
+${mb.message}<p>
+#springMessage("global.username")
+<form action="#springUrl('/welcome')" method="POST">
+#set( $msg = "mb.message")
+#springBind($msg)
+#springShowErrors("<br>")<p>
+#springFormInput($msg "")
+<!-- same as ##springFormInput
+<input type="text" id="message" name="message" value="$!{mb.message}" >
+-->
+<input type="submit">
+</form>
+
+</body>
+</html>

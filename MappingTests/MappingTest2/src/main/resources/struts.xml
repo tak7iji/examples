@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+"http://struts.apache.org/dtds/struts-2.3.dtd">
+ 
+<struts>
+    <constant name="struts.custom.i18n.resources" value="global" />
+	
+<!--     <package name="test9" namespace="/test9" extends="struts-default"> -->
+<!--         <action name=""> -->
+<!--             <result>/WEB-INF/content/mappingdispatchaction9.jsp</result> -->
+<!--         </action> -->
+<!--         <action name="test9_dispatch1" class="org.sample.struts2.mapping.MappingTest9Nest" method="dispatch1"> -->
+<!--             <result name="dispatch1">/WEB-INF/content/dispatch1.jsp</result> -->
+<!--         </action> -->
+<!--     </package> -->
+    
+<!--     <package name="nest" namespace="/Nest" extends="struts-default"> -->
+<!--         <action name="test9_dispatch2" class="org.sample.struts2.mapping.MappingTest9Nest" method="dispatch2"> -->
+<!--             <result name="dispatch2">/WEB-INF/content/dispatch2.jsp</result> -->
+<!--         </action> -->
+<!--     </package> -->
+
+    <package name="relative" namespace="/relative" extends="struts-default">
+        <action name="welcome">
+            <result>pages/welcome.jsp</result>
+        </action>
+    </package>
+
+    <package name="default" namespace="/" extends="struts-default">
+        <global-results>
+            <result name="dispatch1">/WEB-INF/content/dispatch1.jsp</result>
+            <result name="dispatch2">/WEB-INF/content/dispatch2.jsp</result>
+        </global-results>
+
+        <action name="test2">
+            <result>/WEB-INF/content/dispatchaction.jsp</result>
+        </action>
+
+        <action name="test3">
+            <result>/WEB-INF/content/mappingdispatchaction.jsp</result>
+        </action>
+ 				
+        <action name="test4">
+            <result>/WEB-INF/content/lookupdispatchaction.jsp</result>
+        </action>
+ 				
+        <action name="test5">
+            <result>/WEB-INF/content/eventdispatchaction.jsp</result>
+        </action>
+        
+        <action name="test10">
+            <result>/WEB-INF/content/mappingdispatchaction10.jsp</result>
+        </action>
+                
+    </package>
+ 		
+ </struts>

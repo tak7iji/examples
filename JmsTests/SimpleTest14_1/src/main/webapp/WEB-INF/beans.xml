@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:mvc="http://www.springframework.org/schema/mvc"
+    xmlns:jee="http://www.springframework.org/schema/jee"
+    xmlns:jms="http://www.springframework.org/schema/jms"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:jaxws="http://cxf.apache.org/jaxws"
+    xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee.xsd
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/jms http://www.springframework.org/schema/jms/spring-jms.xsd
+        http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd">
+
+    <context:component-scan base-package="org.sample.springmvc" />
+    <jms:annotation-driven/>
+    <bean id="jndiTemplate" class="org.springframework.jndi.JndiTemplate"/>
+    
+    <bean id="remoteJndiTemplate" class="org.springframework.jndi.JndiTemplate">
+        <property name="environment">
+            <props>
+                <prop key="java.naming.provider.url">jnp://10.217.204.22:1099</prop>
+            <!--  
+	            <prop key="java.naming.provider.url">remote://10.217.204.22:4447</prop>
+	            <prop key="java.naming.factory.initial">org.jboss.naming.remote.client.InitialContextFactory</prop>
+            -->
+            </props>
+        </property>
+    </bean>
+  
+    <jaxws:endpoint id="helloWorld" implementor="org.sample.springmvc.extra.HelloWorldImpl" address="/HelloWorld" />
+
+	<bean id="connectionFactory" class="org.springframework.jndi.JndiObjectFactoryBean">
+	    <property name="jndiName" value="java:/ConnectionFactory"/>
+        <property name="jndiTemplate" ref="jndiTemplate"  />
+	</bean>
+	
+    <bean id="destinationResolver" class="org.springframework.jms.support.destination.JndiDestinationResolver" >
+        <property name="jndiTemplate" ref="jndiTemplate"  />
+    </bean>
+    
+ 	<bean id="jmsListenerContainerFactory"
+	        class="org.springframework.jms.config.DefaultJmsListenerContainerFactory">
+	    <property name="connectionFactory" ref="connectionFactory"/>
+	    <property name="destinationResolver" ref="destinationResolver"/>
+	    <property name="concurrency" value="3-10"/>
+	</bean>
+</beans>

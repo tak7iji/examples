@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+          "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+
+
+<struts-config>
+	<form-beans>
+	    <form-bean name="test" type="org.sample.struts1.mapping.TestFormBean"/>
+	</form-beans>
+	
+	<global-forwards>
+		<forward name="dispatch1" module="/" path="/WEB-INF/dispatch1.jsp" />
+		<forward name="dispatch2" module="/" path="/WEB-INF/dispatch2.jsp" />
+	</global-forwards>
+
+	<action-mappings>
+		<action path="/index" type="org.apache.struts.actions.ForwardAction" parameter="/../WEB-INF/test9/modulemappingdispatchaction.jsp"/>
+		<action path="/*/*" type="org.sample.struts1.mapping.MappingTest9{1}" name="test" parameter="{2}"/>
+	</action-mappings>
+</struts-config>
