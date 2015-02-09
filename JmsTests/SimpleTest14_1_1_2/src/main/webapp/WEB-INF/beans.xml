@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:mvc="http://www.springframework.org/schema/mvc"
+    xmlns:jee="http://www.springframework.org/schema/jee"
+    xmlns:jms="http://www.springframework.org/schema/jms"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:jboss="http://www.jboss.org/schema/snowdrop"
+    xmlns:jaxws="http://cxf.apache.org/jaxws"
+    xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee.xsd
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/jms http://www.springframework.org/schema/jms/spring-jms.xsd
+        http://www.jboss.org/schema/snowdrop http://www.jboss.org/schema/snowdrop/snowdrop.xsd
+        http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd">
+
+    <context:component-scan base-package="org.sample.springmvc" />
+    <tx:jta-transaction-manager/>
+ 
+    <jaxws:endpoint id="helloWorld" implementor="org.sample.springmvc.extra.HelloWorldImpl" address="/HelloWorld" />
+
+    <jms:jca-listener-container resource-adapter="resourceAdapter" acknowledge="auto"
+                                transaction-manager="transactionManager"
+                                activation-spec-factory="activationSpecFactory">
+        <jms:listener destination="queue/messageQueue" ref="messageListenerImpl"
+                      method="onMessage"/>
+    </jms:jca-listener-container>
+
+    <jboss:activation-spec-factory id="activationSpecFactory" />
+
+    <jboss:resource-adapter id="resourceAdapter"/>
+
+    <jee:jndi-lookup id="jcaConnectionFactory" jndi-name="java:/JmsXA" expected-type="javax.jms.ConnectionFactory"/>
+    
+</beans>
