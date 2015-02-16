@@ -3,15 +3,17 @@ package org.sample.springmvc.extra;
 import java.util.List;
 
 
+
+
 import org.apache.ibatis.session.SqlSession;
 import org.sample.mybatis.TableMapper;
 import org.sample.mybatis.TestTable;
+import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.support.TransactionTemplate;
 
-@Repository
 public class DBAccess {
     @Autowired private TableMapper sqlMapper;
     @Autowired private PlatformTransactionManager transactionManager;
@@ -27,4 +29,13 @@ public class DBAccess {
             return list;
         });
     }
+    
+    public void startBean() {
+        System.out.println("Start DBAccess: "+this);
+    }
+    
+    public void stopBean() {
+        System.out.println("Stop DBAccess: "+this);
+    }
+
 }

@@ -23,7 +23,7 @@ import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 public class TestServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
-    @Autowired DBAccess dbAccess;
+    @Autowired DBAccess dba;
     
     public void init(ServletConfig config) throws ServletException {
         super.init(config);
@@ -35,7 +35,7 @@ public class TestServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse res)
             throws ServletException, IOException {
         
-        List<TestTable> data = dbAccess.dbAccess();
+        List<TestTable> data = dba.dbAccess();
         req.setAttribute("data", data);
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher( "/WEB-INF/views/list.jsp" );
         dispatcher.forward( req, res );

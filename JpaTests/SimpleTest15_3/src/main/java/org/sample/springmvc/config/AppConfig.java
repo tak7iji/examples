@@ -17,9 +17,19 @@ import org.springframework.transaction.jta.JtaTransactionManager;
 @EnableTransactionManagement
 @ComponentScan(basePackages={"org.sample"})
 public class AppConfig {
+    
+    @Bean
+    public JndiTemplate jndiTemp() {
+        JndiTemplate template = new JndiTemplate();
+        System.out.println("Get JndiTemp: "+template);
+        return template;
+    }
+    
     @Bean
     public JndiTemplate jndiTemplate() {
-        return new JndiTemplate();
+        JndiTemplate template = new JndiTemplate();
+        System.out.println("Get JndiTemplate: "+template);
+        return template;
     }
     
     @Bean

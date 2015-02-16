@@ -9,6 +9,7 @@ import javax.persistence.Query;
 import javax.transaction.UserTransaction;
 
 import org.sample.mybatis.OrderLine;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jndi.JndiTemplate;
 import org.springframework.stereotype.Service;
 
@@ -17,10 +18,16 @@ public class DBAccess {
     @PersistenceUnit
     EntityManagerFactory emFactory;
     
+    // 同一クラスで複数のBeanが定義されている場合、Bean名で区別するか、もしくは@Beanがついたメソッド名で区別する
+    // XMLでBeanを定義している場合は、<bean>のid属性で区別する
+    @Autowired
+    JndiTemplate jndiTemp;
+    
     // UserTransaction版
     public List<OrderLine> dbAccess() throws Throwable {
-        JndiTemplate jndiTemplate = new JndiTemplate();
-        UserTransaction uTx = jndiTemplate.lookup("java:comp/UserTransaction", UserTransaction.class);
+        System.out.println("JndiTemplate: "+jndiTemp);
+//        JndiTemplate jndiTemplate = new JndiTemplate();
+        UserTransaction uTx = jndiTemp.lookup("java:comp/UserTransaction", UserTransaction.class);
 //        EntityManagerFactory emFactory = jndiTemplate.lookup("java:/persistence/emf", EntityManagerFactory.class);
         
         List<OrderLine> list = null;

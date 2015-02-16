@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.sample.mybatis.TestTable;
 import org.sample.springmvc.extra.DBAccess;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 @WebServlet(name="TestServlet", urlPatterns={"/list"})
@@ -26,7 +27,10 @@ public class TestServlet extends HttpServlet {
         ApplicationContext appContext = 
                 new ClassPathXmlApplicationContext("beans.xml");
         
-        List<TestTable> data = appContext.getBean("dbAccess", DBAccess.class).dbAccess();
+        // beans.xmlではid属性なしでBeanを定義しているので、下記のようにしてBeanを取得する。
+        // DBAccessクラスのインスタンスが複数Beanとして定義されている場合は、idをつけるなりして特定できるようにする必要がある
+        List<TestTable> data = appContext.getBean(DBAccess.class).dbAccess();
+        ((AbstractApplicationContext) appContext).close();
         req.setAttribute("data", data);
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher( "/WEB-INF/views/list.jsp" );
         dispatcher.forward( req, res );
