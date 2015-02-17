@@ -14,32 +14,40 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.sample.mybatis.TestTable;
 import org.sample.springmvc.extra.DBAccess;
+import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.stereotype.Component;
 import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
+@Component
 @WebServlet(name="TestServlet", urlPatterns={"/list"})
-public class TestServlet extends HttpServlet {
+public class TestServlet extends HttpServlet implements ApplicationContextAware {
     private static final long serialVersionUID = 1L;
 
     @Autowired DBAccess dba;
     
-    public void init(ServletConfig config) throws ServletException {
-        System.out.println("init: "+this);
-        super.init(config);
-//        SpringBeanAutowiringSupport.processInjectionBasedOnServletContext(this,
-//          config.getServletContext());
-        SpringBeanAutowiringSupport.processInjectionBasedOnCurrentContext(this);
-    }
-
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse res)
             throws ServletException, IOException {
+        
         System.out.println("Start Servlet: "+this);
         List<TestTable> data = dba.dbAccess();
         req.setAttribute("data", data);
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher( "/WEB-INF/views/list.jsp" );
         dispatcher.forward( req, res );
+    }
+
+    @Override
+    public void setApplicationContext(ApplicationContext applicationContext)
+            throws BeansException {
+        System.out.println("Set ApplicationContext: "+this);
+        AutowiredAnnotationBeanPostProcessor bpp = new AutowiredAnnotationBeanPostProcessor();
+        bpp.setBeanFactory(applicationContext.getAutowireCapableBeanFactory());
+        bpp.processInjection(this);
+        
     }
 }
