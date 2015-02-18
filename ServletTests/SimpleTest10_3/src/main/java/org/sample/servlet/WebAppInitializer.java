@@ -15,8 +15,8 @@ public class WebAppInitializer implements WebApplicationInitializer {
     @Override
     public void onStartup(ServletContext servletContext)
             throws ServletException {
-        XmlWebApplicationContext ctx = new XmlWebApplicationContext();
-        ctx.setConfigLocation("classpath:beans.xml");
+        final XmlWebApplicationContext ctx = new XmlWebApplicationContext();
+        ctx.setConfigLocation("WEB-INF/beans.xml");
          
         servletContext.addListener(new ContextLoaderListener(ctx));
         ctx.setServletContext(servletContext);

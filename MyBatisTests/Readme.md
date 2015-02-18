@@ -11,3 +11,4 @@
 * SimpleTest7_3_2_1：SimpleTest7_3_2のJavaConfig版
 
 * SimpleTest7_4: WebService+MyBatis-Spring。複数テーブルのJOIN
+* SimpleTest7_4_1: SimpleTest7_4のResultMapを自動マッピング化

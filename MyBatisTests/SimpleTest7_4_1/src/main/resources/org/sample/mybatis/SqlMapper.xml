@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.sample.mybatis.SqlMapper">
+    <!-- autoMappingを明示的に有効化。ただし、idがOrderLineとItemsでバッティングするため、ItemsのidをitemIdに変更 -->
+    <select id="selectOrders" databaseId="postgresql" resultMap="orderResultMap">
+        select o.id, o.qty, i.id as itemId, i.name
+            from order_line o inner join items i on (o.id = i.o_id) 
+            where o.id = #{ID}
+    </select>
+    <resultMap type="org.sample.mybatis.OrderLine" id="orderResultMap" autoMapping="true">
+        <collection property="items" ofType="org.sample.mybatis.Items" resultMap="itemMap"/>
+    </resultMap>
+    <resultMap type="org.sample.mybatis.Items" id="itemMap" autoMapping="true">
+        <id property="id" column="itemId"/>
+    </resultMap>
+</mapper>
