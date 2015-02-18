@@ -15,4 +15,6 @@ public class Items {
     }
     private long id;
     private String name;
+    @SuppressWarnings("unused")
+    private OrderLine o;
 }
