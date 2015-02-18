@@ -9,10 +9,20 @@
             from order_line o inner join items i on (o.id = i.o_id) 
             where o.id = #{ID}
     </select>
+    
+    <!-- resultMapを二つに分けるか、もしくは一つにまとめた形で、上記のSQL文に対するマッピングを定義する。@Manyでは表現できないらしい
     <resultMap type="org.sample.mybatis.OrderLine" id="orderResultMap" autoMapping="true">
         <collection property="items" ofType="org.sample.mybatis.Items" resultMap="itemMap"/>
     </resultMap>
     <resultMap type="org.sample.mybatis.Items" id="itemMap" autoMapping="true">
         <id property="id" column="itemId"/>
     </resultMap>
+    -->
+    
+    <resultMap type="org.sample.mybatis.OrderLine" id="orderResultMap" autoMapping="true">
+        <collection property="items" ofType="org.sample.mybatis.Items" autoMapping="true">
+            <id property="id" column="itemId" javaType="long"/>
+        </collection>
+    </resultMap>
+    
 </mapper>
