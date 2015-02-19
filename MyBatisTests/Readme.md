@@ -10,8 +10,7 @@
 * SimpleTest7_3_2：JBoss版。XMLベース
 * SimpleTest7_3_2_1：SimpleTest7_3_2のJavaConfig版
 
-* SimpleTest7_4: WebService+MyBatis-Spring。複数テーブルのJOIN
-* SimpleTest7_4_1: SimpleTest7_4のResultMapを自動マッピング化
+* SimpleTest7_4: WebService+MyBatis-Spring。複数テーブルのJOIN（引数の値が1の場合は手動マッピング、それ以外の場合は自動マッピング）
 
 * SimpleTest7_5： CamelCaseのテスト
 

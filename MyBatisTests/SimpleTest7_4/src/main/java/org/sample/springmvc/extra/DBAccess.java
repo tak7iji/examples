@@ -15,7 +15,7 @@ public class DBAccess {
     @Autowired SqlMapper sqlMapper;
 
     // UserTransaction版
-    public List<OrderLine> dbAccess() throws Throwable {
+    public List<OrderLine> dbAccess(int type) throws Throwable {
         JndiTemplate jndiTemplate = new JndiTemplate();
         UserTransaction uTx = jndiTemplate.lookup("java:comp/UserTransaction", UserTransaction.class);
         
@@ -23,7 +23,16 @@ public class DBAccess {
         try {
             uTx.begin();
             
-             list = sqlMapper.selectOrders(1);
+            switch(type) {
+            case 1:
+                System.out.println("Call selectOrders1");
+                list = sqlMapper.selectOrders1(1);
+                break;
+            default:
+                System.out.println("Call selectOrders2");
+                list = sqlMapper.selectOrders2(1);
+                break;
+            }
         } catch (Exception e) {
             e.printStackTrace();
         } finally {

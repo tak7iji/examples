@@ -3,12 +3,12 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.sample.mybatis.SqlMapper">
-    <select id="selectOrders" databaseId="postgresql" resultMap="orderResultMap">
+    <select id="selectOrders1" databaseId="postgresql" resultMap="orderResultMap1">
         select o.id as orderId, o.qty as orderQty, i.id as itemId, i.name as itemName 
             from order_line o inner join items i on (o.id = i.o_id) 
             where o.id = #{ID}
     </select>
-    <resultMap type="org.sample.mybatis.OrderLine" id="orderResultMap">
+    <resultMap type="org.sample.mybatis.OrderLine" id="orderResultMap1">
         <id property="id" column="orderId" javaType="long"/>
         <result property="qty" column="orderQty"/>
         <collection property="items" ofType="org.sample.mybatis.Items">
@@ -16,4 +16,27 @@
             <result property="name" column="itemName"/>
         </collection>
     </resultMap>
+    
+    <!-- autoMappingを明示的に有効化。ただし、idがOrderLineとItemsでバッティングするため、ItemsのidをitemIdに変更 -->
+    <select id="selectOrders2" databaseId="postgresql" resultMap="orderResultMap2">
+        select o.id, o.qty, i.id as itemId, i.name
+            from order_line o inner join items i on (o.id = i.o_id) 
+            where o.id = #{ID}
+    </select>
+    
+    <!-- resultMapを二つに分けるか、もしくは一つにまとめた形で、上記のSQL文に対するマッピングを定義する。@Manyでは表現できないらしい
+    <resultMap type="org.sample.mybatis.OrderLine" id="orderResultMap2" autoMapping="true">
+        <collection property="items" ofType="org.sample.mybatis.Items" resultMap="itemMap2"/>
+    </resultMap>
+    <resultMap type="org.sample.mybatis.Items" id="itemMap2" autoMapping="true">
+        <id property="id" column="itemId"/>
+    </resultMap>
+    -->
+    
+    <resultMap type="org.sample.mybatis.OrderLine" id="orderResultMap2" autoMapping="true">
+        <collection property="items" ofType="org.sample.mybatis.Items" autoMapping="true">
+            <id property="id" column="itemId" javaType="long"/>
+        </collection>
+    </resultMap>
+     
 </mapper>
