@@ -14,7 +14,7 @@ public class MultiRecord extends SpringBeanAutowiringSupport {
     @Autowired DBAccess dbAccess;
     
     @WebMethod
-    public List<OrderLine> execute() throws Exception {
+    public List<OrderLine> execute(int type) throws Exception {
         
         try {
             return dbAccess.dbAccess();

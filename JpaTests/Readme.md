@@ -4,10 +4,8 @@
 * SimpleTest15_2：WebService+JPA。Spring Data JPA利用版
 
 * SimpleTest15_3: SimpleTest7_4のJPA版
-* SimpleTest15_3_1: SimpleTest15_3のSpring DATA JPA版
+* SimpleTest15_3_1: SimpleTest15_3のSpring DATA JPA版（引数の値が1の場合はデフォルトのメソッド、引数の値が2の場合は命名規則に基づいたメソッド、それ以外の場合は@Queryが指定されたメソッドを実行）
 * SimpleTest15_3_1_1: SimpleTest15_3_1のXML設定版
-* SimpleTest15_3_2： SimpleTest15_3_1の自前メソッド定義版（命名規則に基づいたメソッド）
-* SimpleTest15_3_3: SimpleTest15_3_1の自前メソッド定義版（@Queryでクエリを指定）
 
 SimpleTest15_3/15_3_1/7_4で利用するテーブルの構造					
 order_line			items		
