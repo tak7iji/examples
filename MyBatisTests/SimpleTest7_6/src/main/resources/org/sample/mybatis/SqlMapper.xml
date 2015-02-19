@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.sample.mybatis.SqlMapper">
+    <select id="selectTestTables1" databaseId="postgresql" resultType="org.sample.mybatis.TestTable">
+        select * from TestTable
+        <if test="param2 =='true'">
+        where id=#{param1} and name like '%${param3}%'
+        </if>
+    </select>
+    
+    <select id="selectTestTables2" databaseId="postgresql" resultType="org.sample.mybatis.TestTable">
+        select * from TestTable
+        <if test="LIMIT_ID =='true'">
+        where id=#{param1} and name like '%${param2}%'
+        </if>
+    </select>
+    
+    <select id="selectTestTables3" databaseId="postgresql" resultType="org.sample.mybatis.TestTable">
+        select * from TestTable
+        <if test="param2[0] =='true'">
+        where id=#{param1[0]} and name like '%${param1[1]}%'
+        </if>
+    </select>
+    
+    <select id="selectTestTables4" databaseId="postgresql" resultType="org.sample.mybatis.TestTable">
+        select * from TestTable
+        <if test="list[1] =='true'">
+        where id=#{list[0]} and name like '%${list[2]}%'
+        </if>
+    </select>
+
+    <select id="selectTestTables5" databaseId="postgresql" resultType="org.sample.mybatis.TestTable">
+        select * from TestTable
+        <if test="limitId =='true'">
+        where id=#{id} and name like '%${address}%'
+        </if>
+    </select>
+
+    <select id="selectTestTables6" databaseId="postgresql" resultType="org.sample.mybatis.TestTable">
+        select * from TestTable
+        <if test="param2.limitId =='true'">
+        where id=#{param1.id} and name like '%${param1.address}%'
+        </if>
+    </select>
+
+    <select id="selectTestTables7" databaseId="postgresql" resultType="org.sample.mybatis.TestTable">
+        select * from TestTable
+        <if test="array[1] =='true'">
+        where id=#{array[0]} and name like '%${array[2]}%'
+        </if>
+    </select>
+
+    <select id="selectTestTables8" databaseId="postgresql" resultType="org.sample.mybatis.CustomerTable">
+        select * from customer_table where c_id = #{x}
+    </select>
+
+    <insert id="insertTestTable">
+        insert into TestTable values(#{param1}, #{param2}, #{param3})
+    </insert>
+
+</mapper>

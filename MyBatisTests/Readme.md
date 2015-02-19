@@ -17,3 +17,6 @@
 * SimpleTest7_5_1： CamelCaseのテスト（プロパティ名がカラム名のCamelCase）
 * SimpleTest7_5_2： JPAのアノテーションが入りっぱなしでも悪影響を及ぼさないかテスト 
 * SimpleTest7_5_3： Mapper XMLファイルに記載したSQL文がすべて大文字でもCamelCaseに影響しないかテスト
+
+* SimpleTest7_6： パラメータ名のテスト
+
