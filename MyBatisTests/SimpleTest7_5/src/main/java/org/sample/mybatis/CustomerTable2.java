@@ -1,6 +1,6 @@
 package org.sample.mybatis;
 
-public class CustomerTable {
+public class CustomerTable2 extends CustomerTable {
     private int cId;
     private String cName;
     private String cAddress;

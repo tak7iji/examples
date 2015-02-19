@@ -1,8 +1,19 @@
 package org.sample.mybatis;
 
-public class CustomerTable {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="customer_table")
+public class CustomerTable3 extends CustomerTable {
+    @Id
+    @Column(name="c_id")
     private int cId;
+    @Column(name="c_name")
     private String cName;
+    @Column(name="c_address")
     private String cAddress;
     public int getcId() {
         return cId;

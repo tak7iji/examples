@@ -13,10 +13,7 @@
 * SimpleTest7_4: WebService+MyBatis-Spring。複数テーブルのJOIN
 * SimpleTest7_4_1: SimpleTest7_4のResultMapを自動マッピング化
 
-* SimpleTest7_5： CamelCaseのテスト（カラム名＝プロパティ名）
-* SimpleTest7_5_1： CamelCaseのテスト（プロパティ名がカラム名のCamelCase）
-* SimpleTest7_5_2： JPAのアノテーションが入りっぱなしでも悪影響を及ぼさないかテスト 
-* SimpleTest7_5_3： Mapper XMLファイルに記載したSQL文がすべて大文字でもCamelCaseに影響しないかテスト
+* SimpleTest7_5： CamelCaseのテスト
 
 * SimpleTest7_6： パラメータ名のテスト
 

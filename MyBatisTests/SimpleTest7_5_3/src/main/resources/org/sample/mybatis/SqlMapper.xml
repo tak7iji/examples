@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper
-  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="org.sample.mybatis.SqlMapper">
-    <select id="selectTestTables" databaseId="postgresql" resultType="org.sample.mybatis.CustomerTable">
-        SELECT C_ID, C_NAME, C_ADDRESS FROM CUSTOMER_TABLE WHERE C_ID = #{c_id}
-    </select>
-</mapper>

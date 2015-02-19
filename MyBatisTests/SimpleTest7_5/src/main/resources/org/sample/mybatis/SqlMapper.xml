@@ -3,7 +3,16 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.sample.mybatis.SqlMapper">
-    <select id="selectTestTables" databaseId="postgresql" resultType="org.sample.mybatis.CustomerTable">
+    <select id="selectTestTables1" databaseId="postgresql" resultType="org.sample.mybatis.CustomerTable1">
         select * from customer_table where c_id = #{c_id}
+    </select>
+    <select id="selectTestTables2" databaseId="postgresql" resultType="org.sample.mybatis.CustomerTable2">
+        select * from customer_table where c_id = #{c_id}
+    </select>
+    <select id="selectTestTables3" databaseId="postgresql" resultType="org.sample.mybatis.CustomerTable3">
+        select * from customer_table where c_id = #{c_id}
+    </select>
+    <select id="selectTestTables4" databaseId="postgresql" resultType="org.sample.mybatis.CustomerTable2">
+        SELECT C_ID, C_NAME, C_ADDRESS FROM CUSTOMER_TABLE WHERE C_ID = #{c_id}
     </select>
 </mapper>
