@@ -2,5 +2,6 @@
 * SimpleTest10_1： Servlet#initでSpringBeanを有効化
 * SimpleTest10_2: ApplicationContextAwareを実装している（けど、ApplicationContextは設定されない） 
 * SimpleTest10_3： WebApplicationInitializer内でServletをインスタンス化＆ServletにInject
+* SimpleTest10_4: AspectJを用いたコンパイル時Weaving
 		
 * SimpleTest9： WebApplicationContext経由でSpring Beanを取得（SpringMVCは使っている）
