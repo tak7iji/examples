@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:annotation-config/>
+<!--     <context:component-scan base-package="org.sample.springmvc.beans, org.sample.springmvc.auto2" /> -->
+    <context:component-scan base-package="org.sample.springmvc.beans" />
+    <!-- 記述順に読み込まれる。同じキーが指定されている場合は、後に記載されているものが有効となる -->
+    <!-- 同一のファイルが同一クラスパス上に存在する場合、外部（JBossならばモジュール）に登録されたものが優先される -->
+    <context:property-placeholder location="classpath:message-xml.properties, classpath:message.properties"/>
+
+    <bean id="messageBean" class="org.sample.springmvc.beans.manual.MessageBean">
+        <property name="message" value="Hello World"/>
+    </bean>
+    
+    <bean id="messageBean3" class="org.sample.springmvc.beans.manual.MessageBean3">
+        <property name="message" value="Hello World"/>
+    </bean>
+
+    <bean id="messageBean4" class="org.sample.springmvc.beans.manual.MessageBean4">
+        <property name="message" value="Hello World"/>
+    </bean>
+
+    <bean id="messageBean5" class="org.sample.springmvc.beans.manual.MessageBean5" primary="true">
+        <property name="message" value="Hello World"/>
+    </bean>
+    
+    <bean class="org.sample.springmvc.beans.manual.MessageBean8">
+        <property name="message" value="Hello World"/>
+    </bean>
+
+    <bean class="org.sample.springmvc.beans.manual.MessageBean9">
+        <property name="message" value="Hello World"/>
+    </bean>
+    <!-- こちらが優先して取得される -->
+    <bean class="org.sample.springmvc.beans.manual.MessageBean9" primary="true">
+        <property name="message" value="Hello World2"/>
+    </bean>
+
+    <bean id="mb2" class="org.sample.springmvc.beans.manual.MessageBean2">
+        <property name="message" value="Hello World"/>
+    </bean>
+</beans>
