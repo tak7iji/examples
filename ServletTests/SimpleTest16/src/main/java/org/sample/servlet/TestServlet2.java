@@ -89,6 +89,7 @@ public class TestServlet2 extends HttpServlet {
         System.out.println(messageBeanAuto3.sayHelo5());
         System.out.println(messageBeanAuto3.sayHelo6());
         System.out.println(messageBeanAuto3.sayHelo7());
+        System.out.println(messageBeanAuto3.sayHelo8());
 
         req.setAttribute("data", map);
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher( "/WEB-INF/views/view.jsp" );

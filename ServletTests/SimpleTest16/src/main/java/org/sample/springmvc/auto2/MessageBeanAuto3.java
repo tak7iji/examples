@@ -46,6 +46,11 @@ public class MessageBeanAuto3 {
         return "Hello "+env.getProperty("message.text7", "Foo");
     }
     
+    @Value("${message.text8:Boo}") String msg8;
+    public String sayHelo8() {
+        return "Hello "+msg8;
+    }
+    
     public void setMessage(String message) {
         this.message = message;
     }
