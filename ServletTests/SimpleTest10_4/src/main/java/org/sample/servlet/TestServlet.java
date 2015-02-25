@@ -35,8 +35,9 @@ public class TestServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse res)
             throws ServletException, IOException {
         
-        System.out.println("Start Servlet: "+this);
+        System.out.println("Start Servlet: "+this+"("+dba+")");
         List<TestTable> data = dba.dbAccess();
+        System.out.println(data);
         req.setAttribute("data", data);
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher( "/WEB-INF/views/list.jsp" );
         dispatcher.forward( req, res );

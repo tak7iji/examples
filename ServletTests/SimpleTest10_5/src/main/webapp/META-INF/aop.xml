@@ -1,0 +1,12 @@
+<aspectj>
+    <weaver options="-verbose
+        -showWeaveInfo
+        -XmessageHandlerClass:org.springframework.aop.aspectj.AspectJWeaverMessageHandler">
+        <include within="org.sample..*" />
+        <exclude within="*..*CGLIB*" />
+        <exclude within="*..*javassist*" />
+    </weaver>
+    <aspects>
+        <aspect name="org.springframework.beans.factory.aspectj.AbstractInterfaceDrivenDependencyInjectionAspect"/>
+    </aspects>
+</aspectj>

@@ -13,8 +13,9 @@ import org.sample.mybatis.SqlMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jndi.JndiTemplate;
 import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
-@Repository
+@Service
 public class DBAccess {
     @Autowired
     SqlMapper sqlMapper;

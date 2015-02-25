@@ -5,6 +5,8 @@ import java.util.List;
 import org.sample.mybatis.TableMapper;
 import org.sample.mybatis.TestTable;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.TransactionStatus;
@@ -12,6 +14,7 @@ import org.springframework.transaction.support.TransactionCallback;
 import org.springframework.transaction.support.TransactionTemplate;
 
 @Service
+@Scope(value="request", proxyMode=ScopedProxyMode.TARGET_CLASS)
 public class DBAccess {
     @Autowired private TableMapper sqlMapper;
     @Autowired private PlatformTransactionManager transactionManager;

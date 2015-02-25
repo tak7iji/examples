@@ -8,6 +8,7 @@ import org.springframework.data.repository.query.Param;
 
 public interface SqlMapper extends JpaRepository<OrderLine, Long> {
     public List<OrderLine> findById(Long id);
+    
     @Query("select o from OrderLine o where o.id = :ID")
     public List<OrderLine> selectOrders(@Param("ID") long id);
 }
