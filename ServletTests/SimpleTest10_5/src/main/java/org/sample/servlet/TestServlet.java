@@ -24,19 +24,22 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
-@Configurable
 @WebServlet(name="TestServlet", urlPatterns={"/list"})
 public class TestServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
-    @Autowired DBAccess dbAccess;
+//    @Autowired DBAccess dbAccess;
     
+    public TestServlet() {
+        System.out.println("Startup TestServlet.");
+    }
+  
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse res)
             throws ServletException, IOException {
         
         System.out.println("Start Servlet: "+this);
-        List<TestTable> data = dbAccess.dbAccess();
+        List<TestTable> data = new DBAccess().dbAccess();
         req.setAttribute("data", data);
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher( "/WEB-INF/views/list.jsp" );
         dispatcher.forward( req, res );

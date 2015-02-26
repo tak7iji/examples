@@ -6,6 +6,7 @@ import org.aspectj.lang.annotation.Aspect;
 import org.sample.mybatis.TableMapper;
 import org.sample.mybatis.TestTable;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.PlatformTransactionManager;
@@ -13,7 +14,7 @@ import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.support.TransactionCallback;
 import org.springframework.transaction.support.TransactionTemplate;
 
-@Component("dbAccess")
+@Configurable
 public class DBAccess {
     @Autowired private TableMapper sqlMapper;
     @Autowired private PlatformTransactionManager transactionManager;
