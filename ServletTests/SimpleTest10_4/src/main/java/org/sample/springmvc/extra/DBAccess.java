@@ -22,7 +22,7 @@ public class DBAccess {
                 System.out.println("From Autowired: "+sqlMapper);
                 sqlMapper.insertTestTable(1, "name", "address");
                 
-                List<TestTable> list = sqlMapper.selectTestTables(5, "true", "a");
+                List<TestTable> list = sqlMapper.selectTestTables(5, "false", "a");
                 status.setRollbackOnly();
                 return list;
             }
