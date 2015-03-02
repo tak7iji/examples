@@ -1,0 +1,4 @@
+<jboss-deployment-structure xmlns="urn:jboss:deployment-structure:1.2">
+    <!-- デフォルトがfalseなので、あえて明示する必要は無い -->
+    <ear-subdeployments-isolated>false</ear-subdeployments-isolated>
+</jboss-deployment-structure>

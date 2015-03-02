@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<packaging>ear</packaging>
+    <artifactId>SimpleTest13_2-ear</artifactId>
+
+	<parent>
+		<groupId>org.sample.springmvc.extra</groupId>
+		<artifactId>SimpleTest13_2</artifactId>
+		<version>1.0.0-BUILD-SNAPSHOT</version>
+	</parent>
+	<build>
+	    <plugins>
+            <plugin>
+                <artifactId>maven-ear-plugin</artifactId>
+                <version>2.4</version>
+                <configuration>
+                    <displayName>SimpleTest13_2</displayName>
+                    <generateApplicationXml>true</generateApplicationXml>
+                    <defaultLibBundleDir>/lib/</defaultLibBundleDir>
+                    <modules>
+                       <ejbModule>
+				           <groupId>org.sample.springmvc.extra</groupId>
+				           <artifactId>SimpleTest13_2-ejb</artifactId>
+	                       <bundleFileName>SimpleTest13_2-ejb.jar</bundleFileName>
+	                   </ejbModule>
+	                   <webModule>
+                           <groupId>org.sample.springmvc.extra</groupId>
+                           <artifactId>SimpleTest13_2-war</artifactId>
+                           <bundleFileName>SimpleTest13_2-ws.war</bundleFileName>
+	                   </webModule>
+	               </modules>
+	           </configuration>
+	       </plugin>
+	   </plugins>    
+	   <finalName>SimpleTest13_2</finalName>
+	</build>
+	<dependencies>
+		<dependency>
+			<groupId>org.sample.springmvc.extra</groupId>
+			<artifactId>SimpleTest13_2-ejb</artifactId>
+			<version>1.0.0-BUILD-SNAPSHOT</version>
+			<type>ejb</type>
+		</dependency>
+		<dependency>
+			<groupId>org.sample.springmvc.extra</groupId>
+			<artifactId>SimpleTest13_2-war</artifactId>
+			<version>1.0.0-BUILD-SNAPSHOT</version>
+			<type>war</type>
+		</dependency>
+	</dependencies>
+</project>
