@@ -18,4 +18,7 @@
 
 * SimpleTest7_6： パラメータ名のテスト
 
-* SimpleTest13_2: EAR版。Spring/MyBatis関連のJARファイルをWARに含めず、EAR/libにのみ配置する。こうしないと、ContextLoaderのクラスローダがwar:mainとear:mainに分かれてしまい、WARでContextLoaderListenerによりロードしたBean定義ファイルの情報がEJB-JAR内に配置されたBeanFactoryから見えなくなる（BeanFactoryはear:mainでロードされたContextLoaderを読んでしまうため）
+* SimpleTest13：WebService+Spring+MyBatis
+* SimpleTest13_1：WebService+Spring+MyBatis（Java Config利用）版
+
+* SimpleTest13_2: SimpleTest13のEAR版。Spring/MyBatis関連のJARファイルをWARに含めず、EAR/libにのみ配置する。こうしないと、ContextLoaderのクラスローダがwar:mainとear:mainに分かれてしまい、WARでContextLoaderListenerによりロードしたBean定義ファイルの情報がEJB-JAR内に配置されたBeanFactoryから見えなくなる（BeanFactoryはear:mainでロードされたContextLoaderを読んでしまうため）
