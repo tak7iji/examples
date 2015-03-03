@@ -6,6 +6,7 @@ public class OrderLine {
     private long id;
     private Set<Items> items;
     private long qty;
+    private Items item;
     public long getId() {
         return id;
     }
@@ -23,5 +24,11 @@ public class OrderLine {
     }
     public void setItems(Set<Items> items) {
         this.items = items;
+    }
+    public Items getItem() {
+        return item;
+    }
+    public void setItem(Items item) {
+        this.item = item;
     }
 }

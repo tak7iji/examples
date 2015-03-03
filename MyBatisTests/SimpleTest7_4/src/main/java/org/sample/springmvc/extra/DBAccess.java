@@ -28,9 +28,13 @@ public class DBAccess {
                 System.out.println("Call selectOrders1");
                 list = sqlMapper.selectOrders1(1);
                 break;
-            default:
+            case 2:
                 System.out.println("Call selectOrders2");
                 list = sqlMapper.selectOrders2(1);
+                break;
+            default:
+                System.out.println("Call selectOrders3");
+                list = sqlMapper.selectOrders3(1);
                 break;
             }
         } catch (Exception e) {

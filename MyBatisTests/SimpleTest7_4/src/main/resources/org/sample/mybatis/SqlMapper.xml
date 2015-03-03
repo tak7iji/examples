@@ -25,7 +25,7 @@
     </select>
     
     <!-- resultMapを二つに分けるか、もしくは一つにまとめた形で、上記のSQL文に対するマッピングを定義する。@Manyでは表現できないらしい
-    <resultMap type="org.sample.mybatis.OrderLine" id="orderResultMap2" autoMapping="true">
+    <resultMap type="org.sample.mybatis.OrderLine1" id="orderResultMap2" autoMapping="true">
         <collection property="items" ofType="org.sample.mybatis.Items" resultMap="itemMap2"/>
     </resultMap>
     <resultMap type="org.sample.mybatis.Items" id="itemMap2" autoMapping="true">
@@ -37,6 +37,21 @@
         <collection property="items" ofType="org.sample.mybatis.Items" autoMapping="true">
             <id property="id" column="itemId" javaType="long"/>
         </collection>
+    </resultMap>
+     
+    <!-- Itemを一つだけ検索 -->
+    <select id="selectOrders3" databaseId="postgresql" resultMap="orderResultMap3">
+        select o.id as orderId, o.qty as orderQty, i.id as itemId, i.name as itemName 
+            from order_line o inner join items i on (o.id = i.o_id) 
+            where o.id = #{ID}
+    </select>
+    <resultMap type="org.sample.mybatis.OrderLine" id="orderResultMap3">
+        <id property="id" column="orderId" javaType="long"/>
+        <result property="qty" column="orderQty"/>
+        <association property="item" javaType="org.sample.mybatis.Items">
+            <id property="id" column="itemId" javaType="long"/>
+            <result property="name" column="itemName"/>
+        </association>
     </resultMap>
      
 </mapper>
