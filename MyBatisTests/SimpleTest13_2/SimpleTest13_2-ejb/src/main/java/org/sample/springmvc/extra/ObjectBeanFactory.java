@@ -6,7 +6,7 @@ import org.springframework.web.context.WebApplicationContext;
 
 public class ObjectBeanFactory {
     public DBAccess getBean() {
-        System.out.println("ClassLoader: "+ContextLoader.class.getClassLoader());
+        System.out.println("ClassLoader: "+this.getClass().getClassLoader()+","+ContextLoader.class.getClassLoader());
         WebApplicationContext cc = ContextLoader.getCurrentWebApplicationContext();
         DBAccess dbAccess = cc.getBean("dbAccess", DBAccess.class);
         return dbAccess;

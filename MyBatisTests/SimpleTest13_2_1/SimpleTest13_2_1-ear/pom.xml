@@ -3,11 +3,11 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<packaging>ear</packaging>
-    <artifactId>SimpleTest13_2-ear</artifactId>
+    <artifactId>SimpleTest13_2_1-ear</artifactId>
 
 	<parent>
 		<groupId>org.sample.springmvc.extra</groupId>
-		<artifactId>SimpleTest13_2</artifactId>
+		<artifactId>SimpleTest13_2_1</artifactId>
 		<version>1.0.0-BUILD-SNAPSHOT</version>
 	</parent>
 	<build>
@@ -25,11 +25,11 @@
                            <artifactId>SimpleTest13_2-entity</artifactId>
                            <bundleFileName>SimpleTest13_2-entity.jar</bundleFileName>
                        </jarModule>
-                       <ejbModule>
+                       <jarModule>
 				           <groupId>org.sample.springmvc.extra</groupId>
 				           <artifactId>SimpleTest13_2-ejb</artifactId>
 	                       <bundleFileName>SimpleTest13_2-ejb.jar</bundleFileName>
-	                   </ejbModule>
+	                   </jarModule>
 	                   <webModule>
                            <groupId>org.sample.springmvc.extra</groupId>
                            <artifactId>SimpleTest13_2-war</artifactId>
@@ -46,7 +46,6 @@
 			<groupId>org.sample.springmvc.extra</groupId>
 			<artifactId>SimpleTest13_2-ejb</artifactId>
 			<version>1.0.0-BUILD-SNAPSHOT</version>
-			<type>ejb</type>
 		</dependency>
 		<dependency>
 			<groupId>org.sample.springmvc.extra</groupId>

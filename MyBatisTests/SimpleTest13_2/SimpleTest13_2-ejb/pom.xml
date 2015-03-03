@@ -86,6 +86,12 @@
         	<artifactId>spring-jdbc</artifactId>
         	<version>${org.springframework-version}</version>
         </dependency>
+        <dependency>
+        	<groupId>org.sample.springmvc.extra</groupId>
+        	<artifactId>SimpleTest13_2-entity</artifactId>
+        	<version>1.0.0-BUILD-SNAPSHOT</version>
+        	<scope>provided</scope>
+        </dependency>
 	</dependencies>
 	<build>
         <plugins>

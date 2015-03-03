@@ -10,7 +10,6 @@ import org.sample.mybatis.mapper.SqlMapper;
 import org.sample.springmvc.api.DBAccess;
 import org.sample.springmvc.dto.TestTableDto;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jndi.JndiTemplate;
 import org.springframework.stereotype.Service;
 
@@ -19,7 +18,6 @@ public class DBAccessImpl implements DBAccess {
     @Autowired SqlMapper sqlMapper;
     
     // UserTransaction版
-    @Override
     public List<TestTableDto> dbAccess() throws Throwable {
 
         JndiTemplate jndiTemplate = new JndiTemplate();

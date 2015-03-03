@@ -22,3 +22,4 @@
 * SimpleTest13_1：WebService+Spring+MyBatis（Java Config利用）版
 
 * SimpleTest13_2: SimpleTest13のEAR版。Spring/MyBatis関連のJARファイルをWARに含めず、EAR/libにのみ配置する。こうしないと、ContextLoaderのクラスローダがwar:mainとear:mainに分かれてしまい、WARでContextLoaderListenerによりロードしたBean定義ファイルの情報がEJB-JAR内に配置されたBeanFactoryから見えなくなる（BeanFactoryはear:mainでロードされたContextLoaderを読んでしまうため）
+* SimpleTest13_2_1: SimpleTest13_2のなかのSimpleTest13_2-ejbをjarModuleとして登録したもの。ビルド前に、SimpleTest13_2をmvn installでリポジトリに登録しておくこと

@@ -16,7 +16,7 @@ public class HelloWorldImpl {
 
     @WebMethod
     public List<TestTableDto> sayHi() throws Throwable {
-        System.out.println("ClassLoader: "+ContextLoader.class.getClassLoader());
+        System.out.println("ClassLoader: "+this.getClass().getClassLoader()+","+ContextLoader.class.getClassLoader());
         DBAccess dbAccess = factory.getBean();
         return dbAccess.dbAccess();
     }
