@@ -7,4 +7,6 @@
 	
 * SimpleTest12_2_3：SimpleTest12_2の@Autowired版
 
-* SimpleTest17: ObjectPool利用
+* SimpleTest17: CommonsPoolTargetSourceを利用したObjectPool版
+* SimpleTest17_1: PrototypeTargetSource利用版
+* SimpleTest17_2: ThreadLocalTargetSource利用版

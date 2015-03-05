@@ -107,11 +107,6 @@
             <version>${org.springframework-version}</version>
         </dependency>
 
-        <dependency>
-        	<groupId>commons-pool</groupId>
-        	<artifactId>commons-pool</artifactId>
-        	<version>1.6</version>
-        </dependency>
 	</dependencies>
     <build>
     	<finalName>SimpleTest11</finalName>
@@ -153,5 +148,5 @@
         </plugins>
     </build>
     <groupId>org.sample.springmvc.extra</groupId>
-    <artifactId>SimpleTest17</artifactId>
+    <artifactId>SimpleTest17_1</artifactId>
 </project>
