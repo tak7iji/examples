@@ -6,3 +6,5 @@
 * SimpleTest11_2_1：SimpleTest11_2のJavaConfig版
 	
 * SimpleTest12_2_3：SimpleTest12_2の@Autowired版
+
+* SimpleTest17: ObjectPool利用
