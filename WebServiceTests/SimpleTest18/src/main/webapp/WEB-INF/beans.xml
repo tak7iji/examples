@@ -11,9 +11,8 @@
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
         http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd">
 
-<!--     <context:component-scan base-package="org.sample.springmvc.extra" /> -->
+    <context:component-scan base-package="org.sample.springmvc.extra" />
   
     <jaxws:endpoint id="helloWorld" implementor="org.sample.springmvc.extra.HelloWorldImpl" address="/HelloWorld" />
 
-    <bean id="mb" class="org.sample.springmvc.extra.MessageBean" scope="prototype" init-method="postConstruct" destroy-method="destroy"/>
 </beans>

@@ -8,8 +8,8 @@ import org.springframework.beans.factory.DisposableBean;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
-//@Component(value="mb")
-//@Scope("prototype")
+@Component(value="mb")
+@Scope("prototype")
 public class MessageBean implements DisposableBean {
     private static final Logger logger = Logger.getLogger(MessageBean.class);
 
