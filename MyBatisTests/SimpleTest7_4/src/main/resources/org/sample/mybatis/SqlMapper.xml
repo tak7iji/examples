@@ -5,7 +5,7 @@
 <mapper namespace="org.sample.mybatis.SqlMapper">
     <select id="selectOrders1" databaseId="postgresql" resultMap="orderResultMap1">
         select o.id as orderId, o.qty as orderQty, i.id as itemId, i.name as itemName 
-            from order_line o inner join items i on (o.id = i.o_id) 
+            from order_lines o inner join items i on (o.id = i.o_id) 
             where o.id = #{ID}
     </select>
     <resultMap type="org.sample.mybatis.OrderLine" id="orderResultMap1">
@@ -20,7 +20,7 @@
     <!-- autoMappingを明示的に有効化。ただし、idがOrderLineとItemsでバッティングするため、ItemsのidをitemIdに変更 -->
     <select id="selectOrders2" databaseId="postgresql" resultMap="orderResultMap2">
         select o.id, o.qty, i.id as itemId, i.name
-            from order_line o inner join items i on (o.id = i.o_id) 
+            from order_lines o inner join items i on (o.id = i.o_id) 
             where o.id = #{ID}
     </select>
     
@@ -42,7 +42,7 @@
     <!-- Itemを一つだけ検索 -->
     <select id="selectOrders3" databaseId="postgresql" resultMap="orderResultMap3">
         select o.id as orderId, o.qty as orderQty, i.id as itemId, i.name as itemName 
-            from order_line o inner join items i on (o.id = i.o_id) 
+            from order_lines o inner join items i on (o.id = i.o_id) 
             where o.id = #{ID}
     </select>
     <resultMap type="org.sample.mybatis.OrderLine" id="orderResultMap3">

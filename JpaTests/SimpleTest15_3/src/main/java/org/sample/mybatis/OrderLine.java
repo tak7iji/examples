@@ -10,7 +10,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="order_line")
+@Table(name="order_lines")
 public class OrderLine {
     @Id
     @Column(name="id")
