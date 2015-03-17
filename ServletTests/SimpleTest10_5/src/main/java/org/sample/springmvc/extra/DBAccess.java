@@ -20,6 +20,7 @@ public class DBAccess {
     @Autowired private PlatformTransactionManager transactionManager;
     
     public List<TestTable> dbAccess() {
+        System.out.println(this.getClass().getClassLoader());
         return new TransactionTemplate(transactionManager).execute(new TransactionCallback<List<TestTable>>() {
             public List<TestTable> doInTransaction(TransactionStatus status) {
                 System.out.println("From Autowired: "+sqlMapper);

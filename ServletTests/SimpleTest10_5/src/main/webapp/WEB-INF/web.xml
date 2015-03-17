@@ -8,7 +8,7 @@
         <!--  
         <param-value>/WEB-INF/spring/ApplicationContext.xml</param-value>
         -->
-        <param-value>classpath:beans.xml</param-value>
+        <param-value>classpath:spring-beans.xml</param-value>
     </context-param>
     
     <listener>

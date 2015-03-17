@@ -8,8 +8,6 @@
 	<enableImports><![CDATA[false]]></enableImports>
 	<configs>
 		<config>java:org.sample.springmvc.config.WebAppInitializer</config>
-		<config>java:org.sample.springmvc.config.AppConfig</config>
-		<config>java:org.sample.springmvc.config.MyBatisConfig</config>
 	</configs>
 	<autoconfigs>
 	</autoconfigs>

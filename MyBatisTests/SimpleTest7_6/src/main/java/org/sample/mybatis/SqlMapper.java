@@ -17,6 +17,15 @@ public interface SqlMapper {
     public List<TestTable> selectTestTables7(Object[] params);
 
     public List<CustomerTable> selectTestTables8(int c_id);
+
+    public List<TestTable> selectTestTables9(@Param("param_list") List<Object> params);
+    public List<TestTable> selectTestTables10(@Param("param_list") List<Object> params);
+    public List<TestTable> selectTestTables11(@Param("param_map") Map<String, Object> params);
+    public List<TestTable> selectTestTables12(@Param("map1") Map<String, Object> params, @Param("map2") Map<String, Object> conditions);
+    
+    public List<TestTable> selectTestTables13(Parameters params);
+    public List<TestTable> selectTestTables14(@Param("param_class") Parameters params);
+    public List<TestTable> selectTestTables15(@Param("param_class") Parameters params);
     
     public int insertTestTable(int p1, String p2, String p3);
 
