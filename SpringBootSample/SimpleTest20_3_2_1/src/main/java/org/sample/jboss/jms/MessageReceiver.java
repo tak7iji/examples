@@ -13,11 +13,13 @@ import org.springframework.jms.core.JmsTemplate;
 @Order(1)
 public class MessageReceiver implements CommandLineRunner {
     private Logger logger = Logger.getLogger(MessageReceiver.class);
+
     @Autowired JmsTemplate jmsTemplate;
+    @Autowired String messageQueue;
 
     @Override
     public void run(String... args) throws Exception {
-        Message message = this.jmsTemplate.receive("queue/messageQueue");
+        Message message = this.jmsTemplate.receive(messageQueue);
         logger.info("Message: "+message.getBody(String.class));
     }
 }
