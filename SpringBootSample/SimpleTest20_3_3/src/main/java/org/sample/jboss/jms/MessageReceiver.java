@@ -16,8 +16,8 @@ public class MessageReceiver {
     @Autowired private JmsTemplate jmsTemplate;
 
     public void receiveMessage() throws JMSException {
-        Message message = this.jmsTemplate.receive("queue/messageQueue");
-        logger.info("Message: "+message.getBody(String.class));
+        Object message = this.jmsTemplate.receiveAndConvert("jms/queue/test");
+        logger.info("Message: "+message);
     }
     
 

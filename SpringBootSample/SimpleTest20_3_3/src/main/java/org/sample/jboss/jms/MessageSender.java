@@ -15,7 +15,7 @@ public class MessageSender {
     @Autowired private JmsTemplate jmsTemplate;
 
     public void simpleSend() {
-        this.jmsTemplate.send("queue/messageQueue", new MessageCreator() {
+        this.jmsTemplate.send("jms/queue/test", new MessageCreator() {
             public Message createMessage(Session session) throws JMSException {
                 return session.createTextMessage("hello queue world");
             }
