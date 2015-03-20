@@ -9,7 +9,7 @@ public class JmsClient {
     private static final Logger log = Logger.getLogger(JmsClient.class.getName());
     
     public static void main(String[] args) throws Exception {
-        Object[] objects = {MessageSender.class, MessageReceiver.class};
+        Object[] objects = {MessageReceiver.class, MessageSender.class};
         ConfigurableApplicationContext ctx = SpringApplication.run(objects, args);
         // アプリケーション終了
         ctx.close();
