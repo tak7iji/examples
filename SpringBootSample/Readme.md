@@ -9,7 +9,6 @@
 * SimpleTest20_3_3: JMS送受信サンプル（スタンドアローン版。JBossEAP6.3のHornetQを利用）
 ⇒ JBossEAP6.3に以下の設定を行う
             <hornetq-server>
-                <security-enabled>false</security-enabled>
                 <!-- 途中省略 -->
                 <jms-destinations>
                     <!-- 途中省略 -->
