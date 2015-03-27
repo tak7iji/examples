@@ -21,3 +21,5 @@
 
     application-users.propertiesにjbossユーザを登録する
 * SimpleTest20_4*: Spring-Securityのサンプル
+* SimpleTest21: WebSocketのサンプル。テストコードがクライアントとして動作
+* SimpleTest21_Client: SimpleTest21用のクライアント

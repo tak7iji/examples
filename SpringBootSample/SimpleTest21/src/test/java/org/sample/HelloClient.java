@@ -9,8 +9,11 @@ import javax.websocket.OnMessage;
 import javax.websocket.OnOpen;
 import javax.websocket.Session;
 
+import org.apache.log4j.Logger;
+
 @ClientEndpoint
 public class HelloClient {
+    private Logger logger = Logger.getLogger(HelloClient.class);
     private CountDownLatch latch;
 
     public HelloClient(CountDownLatch latch) {
@@ -26,7 +29,7 @@ public class HelloClient {
     @OnMessage
     public void onMessage(String message) throws Exception {
         /* メッセージ受信時の処理 */
-        System.out.println("Received: " + message);
+        logger.info("Received: " + message);
         this.latch.countDown();
     }
 
