@@ -1,6 +1,7 @@
 package org.sample.spring.websocket;
 
 import java.net.URI;
+import java.util.concurrent.CountDownLatch;
 
 import javax.websocket.ContainerProvider;
 import javax.websocket.Session;
@@ -21,8 +22,11 @@ public class SimpleTest21Application implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
+        CountDownLatch latch = new CountDownLatch(1);
         WebSocketContainer container = ContainerProvider.getWebSocketContainer();
         URI uri = URI.create("ws://127.0.0.1:8080/wsdemo");
-        Session session = container.connectToServer(new HelloClient(), uri);
+        Session session = container.connectToServer(new HelloClient(latch), uri);
+        latch.await();
+        session.close();
     }
 }
