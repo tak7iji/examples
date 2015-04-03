@@ -13,6 +13,7 @@ public class EndpointConfig extends ClientEndpointConfig.Configurator {
     
     @Override
     public void afterResponse(HandshakeResponse hr) {
+        logger.info(hr);
         Map<String, List<String>> headers = hr.getHeaders();
         for(String value: headers.get("Set-Cookie")) {
             logger.info("Set-Cookie -> "+value);
