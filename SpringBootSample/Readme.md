@@ -23,3 +23,4 @@
 * SimpleTest20_4*: Spring-Securityのサンプル
 * SimpleTest21: WebSocketのサンプル。テストコードがクライアントとして動作
 * SimpleTest21_Client: SimpleTest21用のクライアント
+* SimpleTest22: WebSocketのHandShake時にセッション情報を設定する
