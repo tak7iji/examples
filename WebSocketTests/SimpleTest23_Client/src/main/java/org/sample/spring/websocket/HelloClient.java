@@ -1,6 +1,5 @@
 package org.sample.spring.websocket;
 
-import java.io.IOException;
 import java.util.concurrent.CountDownLatch;
 
 import javax.websocket.ClientEndpoint;
@@ -16,7 +15,6 @@ import org.apache.log4j.Logger;
 public class HelloClient {
     private Logger logger = Logger.getLogger(HelloClient.class);
     private CountDownLatch latch;
-    private Session session;
     
     public HelloClient(CountDownLatch latch) {
         this.latch = latch;
@@ -26,14 +24,12 @@ public class HelloClient {
     public void onOpen(Session session) throws Exception {
         /* セッション確立時の処理 */
         session.getBasicRemote().sendText("Hello");
-        this.session = session;
     }
 
     @OnMessage
-    public void onMessage(String message) throws Exception {
+    public void onMessage(String message) {
         /* メッセージ受信時の処理 */
         logger.info("Received: " + message);
-        session.getBasicRemote().sendText("Goodbye");
         latch.countDown();
     }
 

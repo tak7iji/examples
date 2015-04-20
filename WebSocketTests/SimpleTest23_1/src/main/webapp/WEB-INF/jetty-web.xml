@@ -1,0 +1,11 @@
+<?xml version="1.0"  encoding="ISO-8859-1"?>
+<!DOCTYPE Configure PUBLIC "-//Mort Bay Consulting//DTD Configure//EN" "http://www.eclipse.org/jetty/configure.dtd">
+ 
+<Configure class="org.eclipse.jetty.webapp.WebAppContext">
+    <Get id="oldhandler" name="handler" />
+    <Set name="handler">
+        <New id="hellohandler2" class="org.sample.websocket.jetty.server.handler.HelloHandler2">
+            <Set name="handler"><Ref refid="oldhandler" /></Set>
+        </New>
+    </Set>
+</Configure>

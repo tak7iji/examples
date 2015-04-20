@@ -4,9 +4,9 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>org.sample</groupId>
-	<artifactId>SimpleTest21</artifactId>
+	<artifactId>SimpleTest23_Client</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 
 	<name>SimpleTest21</name>
 	<description></description>
@@ -14,43 +14,48 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>1.2.2.RELEASE</version>
+		<version>1.2.3.RELEASE</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<start-class>org.sample.SimpleTest21Application</start-class>
+		<start-class>org.sample.spring.websocket.SimpleTest21Application</start-class>
 		<java.version>1.7</java.version>
 	</properties>
 
 	<dependencies>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-websocket</artifactId>
-		</dependency>
-		
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
-			<exclusions>
-			 <exclusion>
-                    <groupId>org.springframework.boot</groupId>
-                    <artifactId>spring-boot-starter-tomcat</artifactId>
-			 </exclusion>
-			</exclusions>
-		</dependency>
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-undertow</artifactId>
-			<scope>provided</scope>
+			<artifactId>spring-boot-starter</artifactId>
 		</dependency>
+
+        <!-- Tomcat -->
+        <!--  
+        <dependency>
+            <groupId>org.apache.tomcat</groupId>
+            <artifactId>tomcat-websocket</artifactId>
+            <version>8.0.20</version>
+        </dependency>
+        -->
+        
+        <!-- Jetty -->
+        <!--  
+        -->
+        <dependency>
+            <groupId>org.eclipse.jetty.websocket</groupId>
+            <artifactId>javax-websocket-client-impl</artifactId>
+            <version>9.2.9.v20150224</version>
+        </dependency>
+
+        <!-- UnderTow -->
+        <!--  
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
+			<groupId>io.undertow</groupId>
+			<artifactId>undertow-websockets-jsr</artifactId>
 		</dependency>
+        -->
 	</dependencies>
 
 	<build>

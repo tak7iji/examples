@@ -24,7 +24,7 @@ public class SimpleTest21Application implements CommandLineRunner {
     public void run(String... args) throws Exception {
         CountDownLatch latch = new CountDownLatch(1);
         WebSocketContainer container = ContainerProvider.getWebSocketContainer();
-        URI uri = URI.create("ws://127.0.0.1:8080/ss1/wsdemo");
+        URI uri = URI.create("ws://127.0.0.1:8080/SimpleTest23/hellohandler2");
         Session session = container.connectToServer(new HelloClient(latch), uri);
         latch.await();
         session.close();
