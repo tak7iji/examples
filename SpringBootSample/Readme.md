@@ -21,7 +21,7 @@
 
     application-users.propertiesにjbossユーザを登録する
 * SimpleTest20_4*: Spring-Securityのサンプル
-* SimpleTest21: WebSocketのサンプル。テストコードがクライアントとして動作
-* SimpleTest21_1： javax.websocket.Endpointを拡張したWebSocketのサンプル
-* SimpleTest21_Client: SimpleTest21用のクライアント
-* SimpleTest22: WebSocketのHandShake時にセッション情報を設定する
+* SimpleTest21: WebSocketのサンプル。テストコードがクライアントとして動作（Tomcat8、Jetty9、Undertowで動作。pom.xmlでAPサーバ切り替え）
+* SimpleTest21_1： javax.websocket.Endpointを拡張したWebSocketのサンプル（Tomcat8、Jetty9、Undertowで動作。pom.xmlでAPサーバ切り替え）
+* SimpleTest21_Client: SimpleTest21/21_1用のクライアント
+* SimpleTest22: WebSocketのHandShake時にセッション情報を設定する（Tomcat8、Jetty9、Undertowで動作。pom.xmlでAPサーバ切り替え）
