@@ -4,7 +4,7 @@ import java.io.IOException;
 
 import org.eclipse.jetty.websocket.api.WebSocketAdapter;
 
-public class HelloSocket2 extends WebSocketAdapter {
+public class HelloSocket extends WebSocketAdapter {
 
     @Override
     public void onWebSocketText(String message) {
