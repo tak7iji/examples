@@ -6,7 +6,7 @@
 * SimpleTest15_3: SimpleTest7_4のJPA版
 * SimpleTest15_3_1: SimpleTest15_3のSpring DATA JPA版（引数の値が1の場合はデフォルトのメソッド、引数の値が2の場合は命名規則に基づいたメソッド、それ以外の場合は@Queryが指定されたメソッドを実行）
 * SimpleTest15_3_1_1: SimpleTest15_3_1のXML設定版
-
+<pre>
 SimpleTest15_3/15_3_1/15_3_1_1/7_4で利用するテーブルの構造					
 order_lines			items		
 id			        id		
@@ -28,3 +28,4 @@ id  qty             id  name    o_id
                     9	iii	    4
                     10	jjj	    4
                     11	kkk	    5
+</pre>

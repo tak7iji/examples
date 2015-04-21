@@ -7,6 +7,7 @@
 * SimpleTest20_3_2: JMS送受信サンプル（スタンドアローン版）
 * SimpleTest20_3_2_1: JMS送受信サンプル（複数のCommandLineRunnerを実行）
 * SimpleTest20_3_3: JMS送受信サンプル（スタンドアローン版。JBossEAP6.3のHornetQを利用）
+<pre>
     ⇒ JBossEAP6.3に以下の設定を行う
             &lt;hornetq-server&gt;
                 &lt;!-- 途中省略 --&gt;
@@ -20,6 +21,7 @@
             &lt;/hornetq-server&gt;
 
     application-users.propertiesにjbossユーザを登録する
+</pre>
 * SimpleTest20_4*: Spring-Securityのサンプル
 * SimpleTest21: WebSocketのサンプル。テストコードがクライアントとして動作（Tomcat8、Jetty9、Undertowで動作。pom.xmlでAPサーバ切り替え）
 * SimpleTest21_1： javax.websocket.Endpointを拡張したWebSocketのサンプル（Tomcat8、Jetty9、Undertowで動作。pom.xmlでAPサーバ切り替え）
