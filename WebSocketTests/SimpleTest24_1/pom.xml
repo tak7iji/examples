@@ -1,0 +1,21 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.sample.jetty.server</groupId>
+  <version>0.0.1-SNAPSHOT</version>
+  <artifactId>SimpleTest24_1</artifactId>
+  <dependencies>
+  	<dependency>
+  		<groupId>org.eclipse.jetty.websocket</groupId>
+  		<artifactId>javax-websocket-server-impl</artifactId>
+  		<version>${jetty.version}</version>
+  		<scope>provided</scope>
+  	</dependency>
+  </dependencies>
+  <build>
+    <finalName>SimpleTest23</finalName>
+  </build>
+  <properties>
+  	<jetty.version>9.2.10.v20150310</jetty.version>
+  </properties>
+  <packaging>war</packaging>
+</project>

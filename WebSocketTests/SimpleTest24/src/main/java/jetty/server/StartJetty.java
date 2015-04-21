@@ -12,8 +12,8 @@ import org.eclipse.jetty.server.HttpConnectionFactory;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.ServerConnector;
 import org.eclipse.jetty.util.thread.QueuedThreadPool;
-import org.eclipse.jetty.websocket.jsr356.server.pathmap.WebSocketPathSpec;
 import org.eclipse.jetty.websocket.server.WebSocketUpgradeHandlerWrapper;
+import org.eclipse.jetty.websocket.server.pathmap.RegexPathSpec;
 
 public class StartJetty { 
     public static void main(String[] args) throws Exception {
@@ -34,7 +34,7 @@ public class StartJetty {
 
         // websocket context setting
         WebSocketUpgradeHandlerWrapper wsHandler = new WebSocketUpgradeHandlerWrapper();
-        wsHandler.addMapping(new WebSocketPathSpec("/SimpleTest23/hellohandler"), new HelloSocketCreator());
+        wsHandler.addMapping(new RegexPathSpec("/SimpleTest23/hellohandler"), new HelloSocketCreator());
         server.addBean(wsHandler);
         
         // handler setting
