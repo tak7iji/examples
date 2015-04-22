@@ -11,3 +11,4 @@ Jetty用WebSocketサンプル
       &lt;Arg&gt;-org.eclipse.jetty.server.Request&lt;/Arg&gt;
     &lt;/Call&gt;
 </pre>
+* SimpleTest24_2: SimpleTest24の改良版。WebSocketCreator実装クラス内で無理矢理Request._handledをtrueにしないバージョン
