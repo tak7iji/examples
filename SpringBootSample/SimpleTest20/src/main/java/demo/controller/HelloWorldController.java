@@ -13,7 +13,7 @@ public class HelloWorldController {
     
     @Autowired MessageBean messageBean;
     
-    @RequestMapping("/")
+    @RequestMapping("/message")
     @ResponseBody
     public ModelAndView sayHi() {
         ModelAndView mav = new ModelAndView("hello");

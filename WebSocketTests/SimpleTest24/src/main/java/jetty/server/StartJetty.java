@@ -8,9 +8,12 @@ import javax.management.MBeanServer;
 import org.eclipse.jetty.jmx.MBeanContainer;
 import org.eclipse.jetty.server.ConnectionFactory;
 import org.eclipse.jetty.server.Connector;
+import org.eclipse.jetty.server.Handler;
 import org.eclipse.jetty.server.HttpConnectionFactory;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.ServerConnector;
+import org.eclipse.jetty.server.handler.HandlerCollection;
+import org.eclipse.jetty.server.handler.IdleTimeoutHandler;
 import org.eclipse.jetty.util.thread.QueuedThreadPool;
 import org.eclipse.jetty.websocket.server.WebSocketUpgradeHandlerWrapper;
 import org.eclipse.jetty.websocket.server.pathmap.RegexPathSpec;
@@ -37,8 +40,14 @@ public class StartJetty {
         wsHandler.addMapping(new RegexPathSpec("/SimpleTest23/hellohandler"), new HelloSocketCreator());
         server.addBean(wsHandler);
         
+        // 
+        IdleTimeoutHandler itHandler = new IdleTimeoutHandler();
+        itHandler.setIdleTimeoutMs(10000);
+        
         // handler setting
-        server.setHandler(wsHandler);
+        HandlerCollection handlers = new HandlerCollection();
+        handlers.setHandlers(new Handler[] {itHandler, wsHandler});
+        server.setHandler(handlers);
         server.start();
         server.join();
     }
