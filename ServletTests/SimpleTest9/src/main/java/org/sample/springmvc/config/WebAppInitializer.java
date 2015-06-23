@@ -6,7 +6,6 @@ import javax.servlet.ServletRegistration.Dynamic;
 
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.ContextLoaderListener;
-import org.springframework.web.context.request.RequestContextListener;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.servlet.DispatcherServlet;
 
@@ -16,7 +15,12 @@ public class WebAppInitializer implements WebApplicationInitializer {
     public void onStartup(ServletContext servletContext) throws ServletException {
         // TODO Auto-generated method stub
         final AnnotationConfigWebApplicationContext ctx = new AnnotationConfigWebApplicationContext();
-        ctx.register(AppConfig.class);
+        try {
+            ctx.register(Thread.currentThread().getContextClassLoader().loadClass("org.sample.springmvc.config.AppConfig"));
+        } catch (ClassNotFoundException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
 
 //        servletContext.addListener(new RequestContextListener());
         servletContext.addListener(new ContextLoaderListener(ctx));

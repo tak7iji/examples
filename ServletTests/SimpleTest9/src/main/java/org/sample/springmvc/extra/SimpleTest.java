@@ -24,7 +24,7 @@ public class SimpleTest {
     public String login(HttpServletRequest request, Model model) {
         ApplicationContext context = 
                 RequestContextUtils.getWebApplicationContext(request);
-        MessageBean mb = context.getBean("mb", MessageBean.class);
+        MessageBean mb = context.getBean("mb2", MessageBean.class);
         model.addAttribute("mb", mb);
         return "login";
     }

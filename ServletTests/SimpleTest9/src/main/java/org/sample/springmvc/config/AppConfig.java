@@ -1,11 +1,14 @@
 package org.sample.springmvc.config;
 
 import org.sample.springmvc.extra.MessageBean;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.annotation.Scope;
+import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -17,7 +20,11 @@ import org.springframework.web.servlet.view.UrlBasedViewResolver;
 @Configuration
 @EnableWebMvc
 @ComponentScan(basePackages="org.sample.springmvc.extra")
+@PropertySource("classpath:messages.properties")
 public class AppConfig extends WebMvcConfigurationSupport {
+    
+    @Value("${message.hello}")
+    private String message;
 
     @Bean
     public ViewResolver setupViewResolver() {
@@ -41,11 +48,17 @@ public class AppConfig extends WebMvcConfigurationSupport {
         return messageSource;
     }
     
-//    @Bean(name = "mb")
-//    @Scope("request")
+    @Bean
+    public static PropertySourcesPlaceholderConfigurer placeHolderConfigurer() {
+        return new PropertySourcesPlaceholderConfigurer();
+    }
+
+    @Bean(name = "mb2")
+    @Scope("request")
     public MessageBean message() {
+        System.out.println("Message: ["+message+"]");
         MessageBean messageBean = new MessageBean();
-        messageBean.setMessage("Hello World!");
+        messageBean.setMessage(message);
         return messageBean;
     }
 }

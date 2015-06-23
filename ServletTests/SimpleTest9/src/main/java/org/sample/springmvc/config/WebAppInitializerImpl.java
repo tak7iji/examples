@@ -28,7 +28,10 @@ public class WebAppInitializerImpl implements ServletContextListener {
     private String getAppName(ServletContext servletContext)
             throws MalformedURLException {
 
-        String path = servletContext.getResource("/").getPath();
+//        String path = servletContext.getResource("/").getPath();
+        String path = servletContext.getContextPath();
+        servletContext.log("context path: "+servletContext.getContextPath());
+        servletContext.log("path: "+path);
         String[] split = path.split("/");
 
         return split[split.length - 1];
