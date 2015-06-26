@@ -1,0 +1,2 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+org.sample.spring.boot.prop.PropAutoConfiguration

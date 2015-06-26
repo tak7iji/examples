@@ -1,0 +1,15 @@
+{
+  "properties": [
+    {
+      "name": "prop.test1",
+      "type": "java.lang.String",
+      "description": "Sample Property"
+    }    
+  ],
+  "groups": [
+    {
+      "name": "prop",
+      "type": "org.sample.spring.boot.prop.PropProperties"
+    }
+  ]
+} 
