@@ -3,7 +3,8 @@
     {
       "name": "prop.test1",
       "type": "java.lang.String",
-      "description": "Sample Property"
+      "description": "Sample Property",
+      "defaultValue": "No Value"
     }    
   ],
   "groups": [
