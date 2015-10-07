@@ -1,3 +1,9 @@
 target/
 *.class
 .sbt/
+.settings/
+.classpath
+.project
+*.jar
+*.war
+*.ear
