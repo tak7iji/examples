@@ -5,7 +5,7 @@
 <html>
 	<body>
 		<h1>Hello Dispatch1!</h1>
-		${message.message}
+		${message.message}<br>
 		<a href='<spring:url value="test2"/>'>back</a>
 	</body>
 </html>
