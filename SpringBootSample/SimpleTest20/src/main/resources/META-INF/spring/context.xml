@@ -6,5 +6,20 @@
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <context:property-placeholder location="classpath*:META-INF/*/*.properties"/>
+<!-- OK -->
+<!--     <context:property-placeholder location="classpath*:META-INF/*/*.properties"/> -->
+<!--     <context:property-placeholder location="classpath:*/**/*.properties"/> -->
+<!--     <context:property-placeholder location="classpath:**/*.properties"/> -->
+<!--     <context:property-placeholder location="classpath:*/*/*.properties"/> -->
+<!--     <context:property-placeholder location="classpath:META-INF/spring/*.properties"/> -->
+<!--     <context:property-placeholder location="classpath*:*/**/*.properties"/> -->
+    <context:property-placeholder location="classpath*:**/*.properties"/>
+
+<!-- NG -->
+<!--     <context:property-placeholder location="classpath:META-INF/*/*.properties"/> -->
+<!--     <context:property-placeholder location="classpath:*/*.properties"/> -->
+<!--     <context:property-placeholder location="classpath:META-INF/**/*.properties"/> -->
+<!--     <context:property-placeholder location="classpath:META-INF/*/**/*.properties"/> -->
+<!--     <context:property-placeholder location="classpath*:*.properties"/> -->
+
 </beans>
